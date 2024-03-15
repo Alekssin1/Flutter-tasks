@@ -11,7 +11,7 @@ class FourRowCompositionLists extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: SizedBox(
-        height: 400.0, // Set the height according to your design
+        height: 350.0, // Set the height according to your design
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: (songs.length / 4).ceil(), // Number of columns

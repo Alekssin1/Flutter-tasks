@@ -21,8 +21,8 @@ class _SingleOrAlbumItemState extends State<SingleOrAlbumItem> {
     double screenWidth = MediaQuery.of(context).size.width;
     double imageWidth = screenWidth * 0.4;
     return SizedBox(
-      width: imageWidth,
-      height: 300,
+      width: imageWidth > 250 ? 250 : imageWidth,
+      height: 275,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

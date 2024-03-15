@@ -19,6 +19,7 @@ const List<Json> data = [
     'fast_choice': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
     'cover_versions': [5, 6, 7, 8, 9, 10, 11],
     'albums_id': [1, 2, 3, 4, 5, 6, 7],
+    'music_videos_id': [1, 2, 3, 4, 5, 6],
     'songs': [
       {
         'id': 1,
@@ -129,6 +130,43 @@ const List<Json> data = [
         'author': 'Blind8',
         'image': 'assets/images/db/окр.jpg',
         'type': 'Сингл'
+      },
+    ],
+    'music_videos': [
+      {
+        'id': 1,
+        'name': 'Вахтерам',
+        'author': 'FROLOVA',
+        'image': 'assets/images/db/вахтерам.jpg',
+        'views': '4,1 млн переглядів'
+      },
+      {
+        'id': 2,
+        'name': 'Імперії впадуть',
+        'author': 'Бумбокс',
+        'image': 'assets/images/db/імперії_впадуть.jpg',
+        'views': '4,4 млн переглядів'
+      },
+      {
+        'id': 3,
+        'name': 'Місто залите вогнями',
+        'author': 'Lely45',
+        'image': 'assets/images/db/місто_залите_вогнями.jpg',
+        'views': '121 тис. переглядів'
+      },
+      {
+        'id': 4,
+        'name': 'Хованки',
+        'author': 'Tember Blanche',
+        'image': 'assets/images/db/хованки.jpg',
+        'views': '253 тис. переглядів'
+      },
+      {
+        'id': 6,
+        'name': 'Небо',
+        'author': 'SadSvit',
+        'image': 'assets/images/db/небо.jpg',
+        'views': '4 млн переглядів'
       },
     ]
   }

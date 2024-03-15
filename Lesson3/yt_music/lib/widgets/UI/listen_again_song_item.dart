@@ -19,7 +19,7 @@ class _ListenAgainSongItemState extends State<ListenAgainSongItem> {
     double screenWidth = MediaQuery.of(context).size.width;
     double imageWidth = screenWidth * 0.25;
     return SizedBox(
-      width: imageWidth,
+      width: imageWidth > 130 ? 130 : imageWidth,
       height: 150,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
