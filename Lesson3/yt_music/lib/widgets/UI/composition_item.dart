@@ -28,7 +28,7 @@ class _CompositionItemState extends State<CompositionItem> {
       },
       child: Container(
         padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
-        width: itemWidth,
+        width: itemWidth > 600 ? 600 : itemWidth,
 
         decoration: BoxDecoration(
           color: isPlaying ? Colors.grey.withOpacity(0.1) : backgroundColor,

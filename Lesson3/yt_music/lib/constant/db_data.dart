@@ -18,6 +18,7 @@ const List<Json> data = [
     'listen_again': [1, 2, 3, 4, 5, 6, 7],
     'fast_choice': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
     'cover_versions': [5, 6, 7, 8, 9, 10, 11],
+    'albums_id': [1, 2, 3, 4, 5, 6, 7],
     'songs': [
       {
         'id': 1,
@@ -84,6 +85,50 @@ const List<Json> data = [
         'name': 'O Children',
         'author': 'Nick Cave and the Bad Seeds',
         'image': 'assets/images/db/children.jpg'
+      },
+    ],
+    'albums': [
+      {
+        'id': 1,
+        'name': 'Steel City Blues',
+        'author': 'Black Sabbath',
+        'image': 'assets/images/db/steel_city_blues.jpg',
+        'type': 'Альбом'
+      },
+      {
+        'id': 2,
+        'name': 'О, Панно!',
+        'author': 'Артем Пивоваров daі The Вуса',
+        'image': 'assets/images/db/о_панно.jpg',
+        'type': 'Сингл'
+      },
+      {
+        'id': 3,
+        'name': 'Темна вода',
+        'author': 'Epolets',
+        'image': 'assets/images/db/темна_вода.jpg',
+        'type': 'Мініальбом'
+      },
+      {
+        'id': 4,
+        'name': 'Зембонджу',
+        'author': 'Курган & Agregat',
+        'image': 'assets/images/db/акорди.jpg',
+        'type': 'Альбом'
+      },
+      {
+        'id': 5,
+        'name': 'Племена',
+        'author': 'Asket',
+        'image': 'assets/images/db/племена.jpg',
+        'type': 'Сингл'
+      },
+      {
+        'id': 7,
+        'name': 'О.К.Р.',
+        'author': 'Blind8',
+        'image': 'assets/images/db/окр.jpg',
+        'type': 'Сингл'
       },
     ]
   }
