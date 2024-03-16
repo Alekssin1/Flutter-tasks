@@ -38,6 +38,8 @@ class _ButtonWidgetState extends State<ButtonWidget> {
             ),
           ),
         ),
+        elevation: MaterialStateProperty.all<double>(isPressed ? 5.0 : 0.0),
+        shadowColor: MaterialStateProperty.all<Color>(Colors.white.withOpacity(0.5)),
       ),
       child: Text(
         widget.text,

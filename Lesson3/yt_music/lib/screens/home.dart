@@ -5,6 +5,7 @@ import '../constant/theme/colors.dart';
 import '../models/Album.dart';
 import '../models/Song.dart';
 import '../widgets/UI/block_header.dart';
+import '../widgets/UI/bottom_navigation_bar_widget.dart';
 import '../widgets/custom_sliver_app_bar.dart';
 import '../widgets/double_row_song_list.dart';
 import '../widgets/music_tags_bar.dart';
@@ -49,49 +50,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: appBarBackground,
-      bottomNavigationBar: NavigationBarTheme(
-        data: NavigationBarThemeData(
-          backgroundColor: appBarBackground,
-          labelTextStyle: MaterialStateProperty.resolveWith<TextStyle>(
-                (Set<MaterialState> states) =>
-            const TextStyle(color: white),
-          ),
-        ),
-        child: NavigationBar(
-          indicatorColor: const Color(0x00000000),
-          selectedIndex: pageIndex,
-          onDestinationSelected: (int index) {
-            setState(() {
-              pageIndex = index;
-            });
-          },
-          height: 60,
-          destinations: const [
-            NavigationDestination(
-              icon: Icon(
-                Icons.warehouse_outlined,
-                color: white,
-              ),
-              label: "Головна",
-              selectedIcon: Icon(
-                Icons.warehouse_sharp,
-                color: white,
-              ),
-            ),
-            NavigationDestination(
-              icon: Icon(
-                Icons.library_music_outlined,
-                color: white,
-              ),
-              label: "Бібліотека",
-              selectedIcon: Icon(
-                Icons.library_music,
-                color: white,
-              ),
-            ),
-          ],
-        ),
+      backgroundColor: bottomNavigation,
+      bottomNavigationBar: CustomBottomNavigationBar(
+        selectedIndex: pageIndex,
+        onDestinationSelected: (int index) {
+          setState(() {
+            pageIndex = index;
+          });
+        },
       ),
       body: SafeArea(
         child: CustomScrollView(

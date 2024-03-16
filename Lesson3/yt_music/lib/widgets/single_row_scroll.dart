@@ -15,10 +15,10 @@ class SingleRowScroll extends StatelessWidget {
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Container(
-          padding: EdgeInsets.only(top: 8), // Add padding from the top
+          padding: EdgeInsets.only(top: 8),
           child: Row(
             children: [
-              const SizedBox(width: 16), // Adding SizedBox before the Row
+              const SizedBox(width: 16),
               ...items.map((item) {
                 if (item is Album) {
                   return Padding(
@@ -31,8 +31,7 @@ class SingleRowScroll extends StatelessWidget {
                     child: MusicVideoItem(musicVideo: item),
                   );
                 } else {
-                  // Handle unexpected item type
-                  return Container(); // Placeholder widget or null
+                  return Container();
                 }
               }),
             ],

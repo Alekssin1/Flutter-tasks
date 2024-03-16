@@ -32,7 +32,7 @@ class _CompositionItemState extends State<CompositionItem> {
 
         decoration: BoxDecoration(
           color: isPlaying ? Colors.grey.withOpacity(0.1) : backgroundColor,
-          borderRadius: BorderRadius.circular(16.0), // Add BorderRadius here
+          borderRadius: BorderRadius.circular(16.0),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,

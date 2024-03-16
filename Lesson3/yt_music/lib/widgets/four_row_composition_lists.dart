@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/Song.dart';
-import 'package:yt_music/widgets/UI/composition_item.dart'; // Import the CompositionItem widget
+import 'package:yt_music/widgets/UI/composition_item.dart';
 
 class FourRowCompositionLists extends StatelessWidget {
   final List<Song> songs;
@@ -11,10 +11,10 @@ class FourRowCompositionLists extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: SizedBox(
-        height: 350.0, // Set the height according to your design
+        height: 350.0,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: (songs.length / 4).ceil(), // Number of columns
+          itemCount: (songs.length / 4).ceil(),
           itemBuilder: (context, columnIndex) {
             return Padding(
               padding: const EdgeInsets.all(8.0),
@@ -27,7 +27,7 @@ class FourRowCompositionLists extends StatelessWidget {
                       song: songs[index],
                     );
                   } else {
-                    return const SizedBox(); // Return an empty widget if index exceeds the length of listenAgainSongs
+                    return const SizedBox();
                   }
                 }),
               ),

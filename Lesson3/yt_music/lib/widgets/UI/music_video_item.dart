@@ -60,7 +60,7 @@ class _MusicVideoItemState extends State<MusicVideoItem> {
                   Positioned.fill(
                     child: Center(
                       child: IconButton(
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.play_circle_filled,
                           size: 50,
                           color: Colors.white,

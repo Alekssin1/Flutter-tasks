@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 const appBarBackground= Color(0xFF030303);
 const appFooterColor = Color(0xFF131313);
+const bottomNavigation = Color(0x00212121);
 const checkMarksColor = Color(0xFFFFFFB3);
 const white = Color(0xFFFFFFFF);
 const black = Color(0xFF000000);
