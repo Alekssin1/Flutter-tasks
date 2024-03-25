@@ -18,7 +18,7 @@ const List<Json> data = [
     'listen_again': [1, 2, 3, 4, 5, 6, 7],
     'fast_choice': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
     'cover_versions': [5, 6, 7, 8, 9, 10, 11],
-    'albums_id': [1, 2, 3, 4, 5, 6, 7],
+    'albums_id': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
     'music_videos_id': [1, 2, 3, 4, 5, 6],
     'songs': [
       {
@@ -130,6 +130,55 @@ const List<Json> data = [
         'author': 'Blind8',
         'image': 'assets/images/db/окр.jpg',
         'type': 'Сингл'
+      },
+      {
+        'id': 8,
+        'name': 'Хованки',
+        'author': 'Tember Blanche',
+        'image': 'assets/images/db/хованки.jpg',
+        'type': 'Сингл'
+      },
+      {
+        'id': 9,
+        'name': 'Остання сигарета',
+        'author': 'Скрябін',
+        'image': 'assets/images/db/остання_сигарета.jpg',
+        'type': 'Сингл'
+      },
+      {
+        'id': 10,
+        'name': 'O Children',
+        'author': 'Nick Cave and the Bad Seeds',
+        'image': 'assets/images/db/children.jpg',
+        'type': 'Сингл',
+      },
+      {
+        'id': 11,
+        'name': 'О.К.Р.',
+        'author': 'Blind8',
+        'image': 'assets/images/db/окр.jpg',
+        'type': 'Сингл'
+      },
+      {
+        'id': 12,
+        'name': 'Хованки',
+        'author': 'Tember Blanche',
+        'image': 'assets/images/db/хованки.jpg',
+        'type': 'Сингл'
+      },
+      {
+        'id': 13,
+        'name': 'Остання сигарета',
+        'author': 'Скрябін',
+        'image': 'assets/images/db/остання_сигарета.jpg',
+        'type': 'Сингл'
+      },
+      {
+        'id': 14,
+        'name': 'O Children',
+        'author': 'Nick Cave and the Bad Seeds',
+        'image': 'assets/images/db/children.jpg',
+        'type': 'Сингл',
       },
     ],
     'music_videos': [

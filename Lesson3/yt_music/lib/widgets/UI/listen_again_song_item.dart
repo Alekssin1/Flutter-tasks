@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import '../../constant/theme/colors.dart';
 import '../../models/Song.dart';
+import '../music_player.dart';
 
 class ListenAgainSongItem extends StatefulWidget {
   final Song song;
 
-  const ListenAgainSongItem({super.key, required this.song});
+  const ListenAgainSongItem({Key? key, required this.song}) : super(key: key);
 
   @override
   _ListenAgainSongItemState createState() => _ListenAgainSongItemState();
@@ -24,33 +25,39 @@ class _ListenAgainSongItemState extends State<ListenAgainSongItem> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            width: imageWidth > 100 ? 100 : imageWidth,
-            height: imageWidth > 100 ? 100 : imageWidth,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.0),
-              image: DecorationImage(
-                image: AssetImage(widget.song.image),
-                fit: BoxFit.cover,
-              ),
-            ),
-            child: Stack(
-              children: [
-                Positioned.fill(
-                  child: IconButton(
-                    icon: Icon(
-                      isPlaying ? Icons.pause_circle_filled : Icons.play_circle_filled,
-                      size: (imageWidth > 100 ? 100 : imageWidth) * 0.33,
-                      color: white,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        isPlaying = !isPlaying;
-                      });
-                    },
-                  ),
+          Hero(
+            tag: widget.song.id,
+            child: Container(
+              width: imageWidth > 100 ? 100 : imageWidth,
+              height: imageWidth > 100 ? 100 : imageWidth,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.0),
+                image: DecorationImage(
+                  image: AssetImage(widget.song.image),
+                  fit: BoxFit.cover,
                 ),
-              ],
+              ),
+              child: Stack(
+                children: [
+                  Positioned.fill(
+                    child: IconButton(
+                      icon: Icon(
+                        isPlaying ? Icons.pause_circle_filled : Icons.play_circle_filled,
+                        size: (imageWidth > 100 ? 100 : imageWidth) * 0.33,
+                        color: white,
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MusicPlayer(song: widget.song),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           const SizedBox(height: 8),

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:yt_music/models/MusicVideo.dart';
 import '../constant/db_data.dart';
-import '../constant/theme/colors.dart';
 import '../models/Album.dart';
 import '../models/Song.dart';
 import '../widgets/UI/block_header.dart';
-import '../widgets/UI/bottom_navigation_bar_widget.dart';
 import '../widgets/custom_sliver_app_bar.dart';
 import '../widgets/double_row_song_list.dart';
 import '../widgets/music_tags_bar.dart';
@@ -27,7 +25,6 @@ class _HomeScreenState extends State<HomeScreen> {
   late final List<Album> albums;
   late final List<MusicVideo> musicVideos;
   late final String userName;
-  int pageIndex = 0;
 
   @override
   void initState() {
@@ -35,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final List<int> listenAgainSongIds = data[0]['listen_again'].cast<int>();
     final List<int> fastChoiceSongIds = data[0]['fast_choice'].cast<int>();
     final List<int> coverVersionsSongIds =
-        data[0]['cover_versions'].cast<int>();
+    data[0]['cover_versions'].cast<int>();
     final List<int> albumsIds = data[0]['albums_id'].cast<int>();
     final List<int> musicVideoIds = data[0]['music_videos_id'].cast<int>();
     userName = data[0]['user'];
@@ -49,50 +46,39 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: bottomNavigation,
-      bottomNavigationBar: CustomBottomNavigationBar(
-        selectedIndex: pageIndex,
-        onDestinationSelected: (int index) {
-          setState(() {
-            pageIndex = index;
-          });
-        },
-      ),
-      body: SafeArea(
-        child: CustomScrollView(
-          slivers: <Widget>[
-            const CustomSliverAppBar(),
-            const MusicTags(data: data),
-            BlockHeader(
-              title: 'Послухати ще раз',
-              beforeTitle: userName,
-              buttonTitle: "Більше",
-            ),
-            DoubleRowSongList(songs: listenAgainSongs),
-            const BlockHeader(
-              title: 'Швидкий вибір',
-              beforeTitle: "СТВОРІТЬ РАДІОСТАНЦІЮ НА ОСНОВІ КОМПОЗИЦІЇ",
-              buttonTitle: "Відворити все",
-            ),
-            FourRowCompositionLists(songs: fastChoiceSongs),
-            const BlockHeader(
-              title: 'Кавер-версії та ремікси',
-              buttonTitle: "Відворити все",
-            ),
-            FourRowCompositionLists(songs: coverVersionsSongs),
-            const BlockHeader(
-              title: 'Новинки',
-              buttonTitle: "Більше",
-            ),
-            SingleRowScroll(items: albums),
-            const BlockHeader(
-              title: 'Рекомендовані музичні відео',
-              buttonTitle: "Відтворити все",
-            ),
-            SingleRowScroll(items: musicVideos),
-          ],
-        ),
+    return SafeArea(
+      child: CustomScrollView(
+        slivers: <Widget>[
+          const CustomSliverAppBar(),
+          const MusicTags(data: data),
+          BlockHeader(
+            title: 'Послухати ще раз',
+            beforeTitle: userName,
+            buttonTitle: "Більше",
+          ),
+          DoubleRowSongList(songs: listenAgainSongs),
+          const BlockHeader(
+            title: 'Швидкий вибір',
+            beforeTitle: "СТВОРІТЬ РАДІОСТАНЦІЮ НА ОСНОВІ КОМПОЗИЦІЇ",
+            buttonTitle: "Відворити все",
+          ),
+          FourRowCompositionLists(songs: fastChoiceSongs),
+          const BlockHeader(
+            title: 'Кавер-версії та ремікси',
+            buttonTitle: "Відворити все",
+          ),
+          FourRowCompositionLists(songs: coverVersionsSongs),
+          const BlockHeader(
+            title: 'Новинки',
+            buttonTitle: "Більше",
+          ),
+          SingleRowScroll(items: albums),
+          const BlockHeader(
+            title: 'Рекомендовані музичні відео',
+            buttonTitle: "Відтворити все",
+          ),
+          SingleRowScroll(items: musicVideos),
+        ],
       ),
     );
   }

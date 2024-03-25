@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/home.dart';
+import 'screens/main.dart';
 
 void main() {
   runApp(
@@ -8,7 +8,7 @@ void main() {
       theme: ThemeData(fontFamily: "Roboto"),
       initialRoute: '/',
       routes: {
-        '/': (context) => const HomeScreen(),
+        '/': (context) => const MainScreen(),
       },
     ),
   );
