@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../constant/theme/colors.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
-  final int selectedIndex;
+  final TabController selectedController;
   final void Function(int) onDestinationSelected;
 
   final Map<int, String> labels = {
@@ -13,9 +13,47 @@ class CustomBottomNavigationBar extends StatelessWidget {
     2: "Бібліотека",
   };
 
- CustomBottomNavigationBar({
+  final List<Widget> icons = [
+    SvgPicture.asset(
+      'assets/images/home.svg',
+      width: 24,
+      height: 24,
+      color: white,
+    ),
+    SvgPicture.asset(
+      'assets/images/navigation.svg',
+      width: 24,
+      height: 24,
+      color: white,
+    ),
+    const Icon(
+      Icons.library_music_outlined,
+      color: white,
+    ),
+  ];
+
+  final List<Widget> selectedIcons = [
+    SvgPicture.asset(
+      'assets/images/selected_home.svg',
+      width: 24,
+      height: 24,
+      color: white,
+    ),
+    SvgPicture.asset(
+      'assets/images/selected_navigation.svg',
+      width: 24,
+      height: 24,
+      color: white,
+    ),
+    const Icon(
+      Icons.library_music,
+      color: white,
+    ),
+  ];
+
+  CustomBottomNavigationBar({
     Key? key,
-    required this.selectedIndex,
+    required this.selectedController,
     required this.onDestinationSelected,
   }) : super(key: key);
 
@@ -25,69 +63,29 @@ class CustomBottomNavigationBar extends StatelessWidget {
       data: NavigationBarThemeData(
         backgroundColor: appBarBackground,
         labelTextStyle: MaterialStateProperty.resolveWith<TextStyle>(
-              (Set<MaterialState> states) => const TextStyle(color: white),
+          (Set<MaterialState> states) => const TextStyle(color: white),
         ),
       ),
       child: NavigationBar(
-        indicatorColor: indicatorColor,
-        selectedIndex: selectedIndex,
+        indicatorColor: Colors.transparent,
+        selectedIndex: selectedController.index,
         onDestinationSelected: onDestinationSelected,
         height: 60,
-        destinations: [
-          _buildNavItem(
-            index: 0,
-            icon: SvgPicture.asset(
-              'assets/images/home.svg',
-              width: 24,
-              height: 24,
-              color: white,
-            ),
-            label: "Головна",
-            selectedIcon: SvgPicture.asset(
-              'assets/images/selected_home.svg',
-              width: 24,
-              height: 24,
-              color: white,
-            ),
-          ),
-          _buildNavItem(
-            index: 1,
-            icon: SvgPicture.asset(
-              'assets/images/navigation.svg',
-              width: 24,
-              height: 24,
-              color: white,
-            ),
-            label: "Навігація",
-            selectedIcon: SvgPicture.asset(
-              'assets/images/selected_navigation.svg',
-              width: 24,
-              height: 24,
-              color: white,
-            ),
-          ),
-          _buildNavItem(
-            index: 2,
-            icon: const Icon(
-              Icons.library_music_outlined,
-              color: white,
-            ),
-            label: "Бібліотека",
-            selectedIcon: const Icon(
-              Icons.library_music,
-              color: white,
-            ),
-          ),
-        ],
+        destinations: List.generate(labels.length, (index) {
+          return _buildNavItem(
+            index: index,
+            label: labels[index]!,
+            selected: selectedController.index == index,
+          );
+        }),
       ),
     );
   }
 
   Widget _buildNavItem({
     required int index,
-    required Widget icon,
     required String label,
-    required Widget selectedIcon,
+    required bool selected,
   }) {
     return InkWell(
       onTap: () => onDestinationSelected(index),
@@ -98,25 +96,25 @@ class CustomBottomNavigationBar extends StatelessWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            icon,
+            selected ? selectedIcons[index] : icons[index],
             AnimatedContainer(
               duration: const Duration(milliseconds: 500),
-              width: selectedIndex == index ? 150 : 0,
-              height: selectedIndex == index ? 150 : 0,
+              width: selected ? 150 : 0,
+              height: selected ? 150 : 0,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.black.withOpacity(0.3),
               ),
             ),
-            selectedIndex == index
+            selected
                 ? Text(
-              labels[index]!,
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            )
-                : const SizedBox(), // Hide the label when not selected
+                    label,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
+                : const SizedBox(),
           ],
         ),
       ),

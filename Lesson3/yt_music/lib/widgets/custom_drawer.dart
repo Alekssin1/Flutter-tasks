@@ -6,7 +6,11 @@ class CustomDrawer extends StatelessWidget {
   final Function(int) onDrawerItemSelected;
   final int selectedDrawer;
 
-  const CustomDrawer({Key? key, required this.onDrawerItemSelected, required this.selectedDrawer}) : super(key: key);
+  const CustomDrawer(
+      {Key? key,
+      required this.onDrawerItemSelected,
+      required this.selectedDrawer})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +25,7 @@ class CustomDrawer extends StatelessWidget {
               child: InkWell(
                 child: Container(
                   padding: EdgeInsets.only(
-                      top: MediaQuery.of(context).padding.top + 24,
-                      bottom: 24),
+                      top: MediaQuery.of(context).padding.top + 24, bottom: 24),
                   child: const Row(
                     children: [
                       Text(
@@ -54,7 +57,7 @@ class CustomDrawer extends StatelessWidget {
                           fontSize: 16,
                         ),
                       ),
-                      if (selectedDrawer== 0)
+                      if (selectedDrawer == 0)
                         const Icon(
                           Icons.check_rounded,
                           color: white,

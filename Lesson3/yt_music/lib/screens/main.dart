@@ -12,9 +12,11 @@ class MainScreen extends StatefulWidget {
   _MainScreenState createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainScreenState extends State<MainScreen>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+  int pageIndex = 0; // Track the current page index
   int selectedDrawer = 0;
-  int pageIndex = 0;
   bool isScrollingUp = true;
   bool isListMode = true;
   final screens = [
@@ -29,15 +31,31 @@ class _MainScreenState extends State<MainScreen> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+    // Add listener to update pageIndex when the tab changes
+    _tabController.addListener(() {
+      setState(() {
+        pageIndex = _tabController.index;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bottomNavigation,
       bottomNavigationBar: CustomBottomNavigationBar(
-        selectedIndex: pageIndex,
+        selectedController: _tabController,
         onDestinationSelected: (int index) {
-          setState(() {
-            pageIndex = index;
-          });
+          _tabController.animateTo(index);
         },
       ),
       drawer: pageIndex == 2
@@ -107,7 +125,10 @@ class _MainScreenState extends State<MainScreen> {
           }
           return true;
         },
-        child: screens[pageIndex],
+        child: TabBarView(
+          controller: _tabController,
+          children: screens,
+        ),
       ),
     );
   }
