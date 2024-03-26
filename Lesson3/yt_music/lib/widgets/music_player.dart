@@ -8,7 +8,7 @@ import 'UI/PlayerBottomNavigationBar.dart';
 class MusicPlayer extends StatefulWidget {
   final Song song;
 
-  const MusicPlayer({Key? key, required this.song}) : super(key: key);
+  const MusicPlayer({super.key, required this.song});
 
   @override
   _MusicPlayerState createState() => _MusicPlayerState();

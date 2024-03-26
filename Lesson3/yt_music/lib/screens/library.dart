@@ -11,7 +11,7 @@ import '../widgets/two_columns_slider.dart';
 class LibraryScreen extends StatefulWidget {
   final int selectedDrawer;
 
-  const LibraryScreen({Key? key, required this.selectedDrawer}) : super(key: key);
+  const LibraryScreen({super.key, required this.selectedDrawer});
 
   @override
   _LibraryScreenState createState() => _LibraryScreenState();

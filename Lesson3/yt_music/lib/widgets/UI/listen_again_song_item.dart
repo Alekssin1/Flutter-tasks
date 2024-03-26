@@ -6,7 +6,7 @@ import '../music_player.dart';
 class ListenAgainSongItem extends StatefulWidget {
   final Song song;
 
-  const ListenAgainSongItem({Key? key, required this.song}) : super(key: key);
+  const ListenAgainSongItem({super.key, required this.song});
 
   @override
   _ListenAgainSongItemState createState() => _ListenAgainSongItemState();

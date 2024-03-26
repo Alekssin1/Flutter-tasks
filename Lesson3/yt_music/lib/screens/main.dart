@@ -6,7 +6,7 @@ import '../widgets/UI/bottom_navigation_bar_widget.dart';
 import '../widgets/custom_drawer.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key});
+  const MainScreen({super.key});
 
   @override
   _MainScreenState createState() => _MainScreenState();
@@ -15,7 +15,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  int pageIndex = 0; // Track the current page index
+  int pageIndex = 0;
   int selectedDrawer = 0;
   bool isScrollingUp = true;
   bool isListMode = true;
@@ -34,10 +34,11 @@ class _MainScreenState extends State<MainScreen>
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
-    // Add listener to update pageIndex when the tab changes
     _tabController.addListener(() {
       setState(() {
         pageIndex = _tabController.index;
+        // Reset isScrollingUp when changing tabs
+        isScrollingUp = true;
       });
     });
   }
@@ -106,29 +107,28 @@ class _MainScreenState extends State<MainScreen>
                     ),
             )
           : null,
-      body: NotificationListener<ScrollNotification>(
-        onNotification: (notification) {
-          if (notification is ScrollUpdateNotification) {
-            if (notification.scrollDelta! < 0) {
-              if (!isScrollingUp) {
-                setState(() {
-                  isScrollingUp = true;
-                });
+      body: TabBarView(
+        controller: _tabController,
+        children: screens.map((Widget screen) {
+          return NotificationListener<ScrollNotification>(
+            onNotification: (notification) {
+              if (notification is ScrollUpdateNotification) {
+                if (notification.metrics.pixels > 0 &&
+                    notification.scrollDelta! > 0) {
+                  setState(() {
+                    isScrollingUp = false;
+                  });
+                } else {
+                  setState(() {
+                    isScrollingUp = true;
+                  });
+                }
               }
-            } else {
-              if (isScrollingUp) {
-                setState(() {
-                  isScrollingUp = false;
-                });
-              }
-            }
-          }
-          return true;
-        },
-        child: TabBarView(
-          controller: _tabController,
-          children: screens,
-        ),
+              return true;
+            },
+            child: screen,
+          );
+        }).toList(),
       ),
     );
   }
